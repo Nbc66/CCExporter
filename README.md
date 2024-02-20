@@ -30,3 +30,8 @@ or you can just run the project using `python __main__.py`
 
 ### Planed Features
  - add the abbility to compile exported files straight to .dat files
+
+## Credits
+
+Credit to [p0358](https://github.com/p0358) for writing [source-caption-compiler](https://github.com/p0358/source-caption-compiler) and open-sourcing it so that we can now compile 
+closed caption files without needing to use `CaptionCompiler.exe`
