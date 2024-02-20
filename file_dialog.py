@@ -3,6 +3,7 @@ from tkinter import ttk, filedialog
 import vdf_to_json
 import webbrowser
 import sys, os
+import compile_vdf
 
 class GUI:
     def __init__(self):
@@ -15,6 +16,7 @@ class GUI:
         self.format_label = None
         self.override_var = None
         self.override_checkbox = None
+        self.compile_check = None
 
     def update_combobox_based_on_file_format(self, file_path):
         # Update combobox based on the selected file's format
@@ -32,7 +34,24 @@ class GUI:
             output_path = vdf_to_json.cc_txt_to_json_dump(input_value1,input_value2)
         elif(selected_format == "VDF"):
             output_path = vdf_to_json.json_to_vdf_file(input_value1,input_value2)
+            #compile into .dat file if we check the box
+            if self.compile_check.get():
+                cc_data:bytes = None
+                dat_filename:str = None
+                if input_value2 != "":
+                    cc_data = compile_vdf.compile(input_value2)
+                    dat_filename = input_value2
+                else:
+                    cc_data = compile_vdf.compile(input_value1)
+                    dat_filename = input_value1
+            with open(dat_filename.replace(".json",".dat"),"wb") as fp:
+                fp.truncate()
+                fp.write(cc_data)
+                fp.close()
+            webbrowser.open(dat_filename.replace(".json",".dat"))
+            
         webbrowser.open(output_path)
+
         #self.result_label.config(text=f"Input 1: {input_value1}, Input 2: {input_value2}, Format: {selected_format}")
 
     def open_file_dialog(self, entry_widget: tk.Entry, override: bool = False):
@@ -110,6 +129,10 @@ class GUI:
         self.override_checkbox = tk.Checkbutton(window, text="Override Output", variable=self.override_var,
                                                  command=self.on_checkbox_click)
         self.override_checkbox.grid(row=3, column=0, columnspan=2, pady=5)
+
+        self.compile_check = tk.IntVar()
+        self.compile_checkbox = tk.Checkbutton(window, text="Compile captions", variable=self.compile_check)
+        self.compile_checkbox.grid(row=3, column=1, columnspan=2, pady=5)
 
         # Create buttons for opening file dialogs
         entry1_button = tk.Button(window, text="Open File Dialog", command=lambda: self.open_file_dialog(self.entry1))
