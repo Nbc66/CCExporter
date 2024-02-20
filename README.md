@@ -22,8 +22,13 @@ You can Export JSON back to VDF files
 Exported VDF Files are `UTF 16 LE BOM Encoded` this is so that you can easily pass the exported VDF file into CaptionCompiler.exe to easily compile them into
 Source Engine Readable `.dat` files
 
+### Compile straight to `.dat` files
+
+as the title says you can compile JSON files straight to `.dat` files when converting
+it will spit out a `.vdf` file and a `.dat` file which you can use straight away inside the source engine
+
 ## Installing
-To install this app you can simpy go to the [Releases](https://github.com/Nbc66/CCExporter/releases) Section on the Repo
+To install this app you can simply go to the [Releases](https://github.com/Nbc66/CCExporter/releases) Section on the Repo
 and download the latest `CCExporter.exe`
 
 or you can just run the project using `python __main__.py`
