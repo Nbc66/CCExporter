@@ -1,5 +1,5 @@
 # CCExporter
-This is a simple python app that can convert closedcaption_<language>.txt files into .json for easy import into crowdsourcing websites like
+This is a simple python app that can convert `closedcaption_<language>.txt` files into .json for easy import into crowdsourcing websites like
 [crowdin](https://crowdin.com/)
 and
 [POEditor](https://poeditor.com/)
