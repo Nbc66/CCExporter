@@ -48,7 +48,7 @@ def json_to_vdf_file(file_location:str ,Override_file_Output:str = ""):
 
     file_location = to_raw(file_location)
 
-    json_file= open(file_location, "r",encoding="utf-8").read()
+    json_file= open(file_location, "r").read()
 
     json_dump:dict = json.loads(json_file)
 
