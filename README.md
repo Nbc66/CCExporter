@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img width="256" height="256" src="https://img.nbc66.dev/CCExporter_icon.png">
+</p>
+
 # CCExporter
 This is a simple python app that can convert `closedcaption_<language>.txt` files into .json for easy import into crowdsourcing websites like
 [crowdin](https://crowdin.com/)
